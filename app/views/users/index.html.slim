@@ -1,1 +1,8 @@
-h1 hello #{current_user.email}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  span Welcome #{current_user.email}
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      li.nav-item
+        = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
