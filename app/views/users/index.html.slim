@@ -1,8 +1,39 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  span Welcome #{current_user.email}
-  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
-    span.navbar-toggler-icon
-  #navbarNav.collapse.navbar-collapse
-    ul.navbar-nav.ml-auto
-      li.nav-item
-        = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
+- if current_user.has_role? :admin
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    span Welcome Admin
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          = link_to 'Create mahasiswa', new_user_path, class: "nav-link"
+        li.nav-item
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
+  table
+    thead
+      tr
+        th Name
+        th Email
+        th Address
+    tbody
+      - @users.each do |user|
+        tr
+          td #{user.name}
+          td #{user.email}
+          td #{user.address}
+          td = button_to 'Show', user_path(user), method: :get
+          td = button_to 'Edit'
+          td = button_to 'Delete'
+- else
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    span Welcome #{current_user.name}
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          = link_to 'Profile', user_path(current_user), class: "nav-link"
+        li.nav-item
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
+
+

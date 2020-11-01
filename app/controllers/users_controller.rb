@@ -1,24 +1,31 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_params, only: [:create]
 
   def index
-    # @user = User.find(params[:id])
+    @users = User.where.not(id: 1)
   end
 
   def create
-
+    @user = User.create(user_params)
+    # binding.pry
+    if @user.save
+      redirect_to users_path, notice: 'User Successfully Created'
+    else
+      render 'new.html.slim'
+    end
   end
 
   def new
-
+    @user = User.new
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def update
@@ -32,7 +39,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :address, :email)
+      params.require(:user).permit(:name, :address, :email, :password, :password_confirmation)
     end
 
 end
