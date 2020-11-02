@@ -8,6 +8,8 @@
         li.nav-item
           = link_to 'Create mahasiswa', new_user_path, class: "nav-link"
         li.nav-item
+          = link_to 'Print Mahasiswa', users_path(@users, :format => :pdf), class: "nav-link"
+        li.nav-item
           = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
 
   table class="table table-bordered"

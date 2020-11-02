@@ -1,0 +1,13 @@
+h1 class="text-center" Daftar Mahasiswa
+
+table class="table table-bordered"
+  thead class="thead-dark text-center"
+    th Name
+    th Email
+    th Address
+  tbody
+    - User.where.not(name: "Ilham Andrian").each do |user|
+      tr
+        td class="align-middle" #{user.name}
+        td class="align-middle" #{user.email}
+        td class="align-middle" #{user.address}

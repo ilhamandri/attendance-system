@@ -5,6 +5,16 @@ class UsersController < ApplicationController
   def index
     @users = User.where.not(name: "Ilham Andrian").page(params[:page])
     # @display_user = User.page(params[:page]).per(4)
+
+     respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Mahasiswa List",   # Excluding ".pdf" extension.
+        # template: "users/index.html.slim",
+        template: "users/_print_all_mahasiswa.html.slim",
+        layout: 'pdf.html'
+      end
+    end
   end
 
   def create

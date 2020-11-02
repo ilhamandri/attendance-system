@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title
+      | PDF
+    = wicked_pdf_stylesheet_pack_tag "application.css"
+    = wicked_pdf_stylesheet_pack_tag "bootstrap"
+    = wicked_pdf_stylesheet_pack_tag "pdf"
+  body
+    .container
+      = yield
