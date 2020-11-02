@@ -42,6 +42,11 @@ gem 'kaminari'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'bootstrap',  '~>4.3.1'
+gem 'font_awesome5_rails'
+gem "font-awesome-rails"
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

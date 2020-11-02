@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :user_params, only: [:create]
 
   def index
-    @users = User.where.not(name: "Ilham Andrian")
+    @users = User.where.not(name: "Ilham Andrian").page(params[:page])
+    # @display_user = User.page(params[:page]).per(4)
   end
 
   def create

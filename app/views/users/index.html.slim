@@ -9,21 +9,25 @@
           = link_to 'Create mahasiswa', new_user_path, class: "nav-link"
         li.nav-item
           = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
-  table
-    thead
+
+  table class="table table-bordered"
+    thead class="thead-dark text-center"
       tr
         th Name
         th Email
         th Address
+        th [colspan="3"] Actions
     tbody
       - @users.each do |user|
         tr
-          td #{user.name}
-          td #{user.email}
-          td #{user.address}
-          td = button_to 'Show', user_path(user.id), method: :get
-          td = button_to 'Edit', edit_user_path(user.id), method: :get
-          td = button_to 'Delete', user_path(id: user.id), method: :delete, data: {confirm: "are u sure want to delete?"}
+          td class="align-middle" #{user.name}
+          td class="align-middle" #{user.email}
+          td class="align-middle" #{user.address}
+          td class="form-inline justify-content-center"
+            = button_to 'Show', user_path(user.id), method: :get, class: "mx-2 btn btn-primary"
+            = button_to 'Edit', edit_user_path(user.id), class: "mx-2 btn btn-warning"
+            = button_to 'Delete', user_path(id: user.id), method: :delete, data: {confirm: "are u sure want to delete?"}, class: "mx-2 btn btn-danger"
+  = paginate @users
 - else
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span Welcome #{current_user.name}
@@ -33,6 +37,8 @@
       ul.navbar-nav.ml-auto
         li.nav-item
           = link_to 'Profile', user_path(current_user), class: "nav-link"
+        lin.nav-item
+          = link_to 'ATTEND', attendances_path, class: 'nav-link text-success'
         li.nav-item
           = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
 
