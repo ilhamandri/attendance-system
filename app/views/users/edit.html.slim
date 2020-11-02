@@ -1,0 +1,42 @@
+h1 class="text-center my-4" Edit Profile
+
+div class="container"
+  div class="row"
+    div class="col"
+    div class="col-4 py-4 border border-secondary rounded-lg bg-light"
+      = form_with model: @user, url: user_path(@user) do |form|
+        div class="form-group"
+          = form.label :name, class: "text-primary"
+          br
+          = form.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"
+
+        div class="form-group"
+          = form.label :address, class: "text-primary"
+          br
+          = form.text_field :address, autofocus: true, autocomplete: "address", class: "form-control"
+
+        div class="form-group"
+          = form.label :email, class: "text-primary"
+          br
+          = form.text_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+
+        div class="form-group"
+          = form.label :password, "Password", class: "text-primary"
+          - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            | ) characters minimum
+          br
+          = form.password_field :password, autocomplete: "new_password", class: "form-control"
+
+        div class="form-group"
+          = form.label :password_confirmation, class: "text-primary"
+          br
+          = form.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+
+        div class="actions"
+          = form.submit "Save"
+
+      = button_to "Back", users_path, class: "my-4 btn btn-primary"
+    div class="col"

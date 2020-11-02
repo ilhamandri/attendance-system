@@ -27,12 +27,20 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
 gem 'pg'
+# authentication
 gem 'devise'
+# role
 gem "rolify"
+# slim template format
 gem 'slim', '~> 4.1'
+# debug
 gem 'pry', '~> 0.13.1'
+# pagination
+gem 'kaminari'
+# pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 group :development, :test do

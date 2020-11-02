@@ -21,9 +21,9 @@
           td #{user.name}
           td #{user.email}
           td #{user.address}
-          td = button_to 'Show', user_path(user), method: :get
-          td = button_to 'Edit'
-          td = button_to 'Delete'
+          td = button_to 'Show', user_path(user.id), method: :get
+          td = button_to 'Edit', edit_user_path(user.id), method: :get
+          td = button_to 'Delete', user_path(id: user.id), method: :delete, data: {confirm: "are u sure want to delete?"}
 - else
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span Welcome #{current_user.name}
