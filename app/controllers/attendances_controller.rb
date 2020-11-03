@@ -1,7 +1,10 @@
 class AttendancesController < ApplicationController
   before_action :check_attendance, only: [:create]
-  def index
 
+  def index
+    @user_id = params[:user_id]
+    @user_attendance = User.find(params[:user_id]).attendances.all
+    # binding.pry
   end
 
   def create
@@ -25,8 +28,12 @@ class AttendancesController < ApplicationController
 
   end
 
-  def destoy
-
+  def destroy
+    user_id = params[:user_id]
+    @attend = Attendance.find(params[:id])
+    @attend.destroy
+    redirect_to attendances_path(user_id: user_id), notice: "data berhasil dihapus"
+    # binding.pry
   end
 
   private

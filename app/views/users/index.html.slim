@@ -26,9 +26,10 @@
           td class="align-middle" #{user.email}
           td class="align-middle" #{user.address}
           td class="form-inline justify-content-center"
-            = button_to 'Show', user_path(user.id), method: :get, class: "mx-2 btn btn-primary"
-            = button_to 'Edit', edit_user_path(user.id), class: "mx-2 btn btn-warning"
-            = button_to 'Delete', user_path(id: user.id), method: :delete, data: {confirm: "are u sure want to delete?"}, class: "mx-2 btn btn-danger"
+            = link_to 'Details', attendances_path(user_id: user.id), method: :get, class: "btn btn-primary"
+            / = button_to 'Show', user_path(user.id), method: :get, class: "mx-2 btn btn-primary"
+            / = button_to 'Edit', edit_user_path(user.id), class: "mx-2 btn btn-warning"
+            / = button_to 'Delete', user_path(id: user.id), method: :delete, data: {confirm: "are u sure want to delete?"}, class: "mx-2 btn btn-danger"
   = paginate @users
 - else
   nav.navbar.navbar-expand-lg.navbar-light.bg-light

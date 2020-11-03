@@ -1,1 +1,20 @@
-h1 Attendance
+h1 class="text-center my-3" Attendance Details
+
+- flash.each do |key, value|
+  div class="alert alert-success"
+    = value
+
+table class="table table-sm table-bordered text-center"
+  thead class="thead-light "
+    th Date Attend
+    th Status
+    th Action
+  tbody
+    - @user_attendance.each do |attend|
+      tr
+        td #{attend.date_attend.localtime}
+        td #{attend.status}
+        td
+          = button_to 'Delete', attendance_path(id: attend.id, user_id: @user_id), method: :delete, data: {confirm: "are u sure want to delete?"}, class: "btn btn-danger"
+
+= link_to "Back", users_path, method: :get, class: "btn btn-primary"
