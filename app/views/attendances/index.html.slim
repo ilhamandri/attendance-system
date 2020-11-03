@@ -1,8 +1,11 @@
 h1 class="text-center my-3" Attendance Details
 
-- flash.each do |key, value|
-  div class="alert alert-success"
-    = value
+- if flash[:notice].present?
+    div class="alert alert-success"
+      = flash[:notice]
+- if flash[:alert].present?
+  div class="alert alert-danger"
+    = flash[:alert]
 
 table class="table table-sm table-bordered text-center"
   thead class="thead-light "
