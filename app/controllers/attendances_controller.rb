@@ -9,7 +9,7 @@ class AttendancesController < ApplicationController
 
   def create
     @attend = Attendance.create(attendance_params)
-    redirect_to users_path, alert: "successfully attend"
+    redirect_to users_path, notice: "successfully attend"
   end
 
   def new
@@ -32,7 +32,7 @@ class AttendancesController < ApplicationController
     user_id = params[:user_id]
     @attend = Attendance.find(params[:id])
     @attend.destroy
-    redirect_to attendances_path(user_id: user_id), notice: "data berhasil dihapus"
+    redirect_to attendances_path(user_id: user_id), notice: "Data Berhasil dihapus"
     # binding.pry
   end
 
@@ -47,7 +47,7 @@ class AttendancesController < ApplicationController
         get_user_attendance_date = User.find(user).attendances.last.date_attend.to_date
 
         if get_user_attendance_date == Date.today
-          redirect_to users_path, notice: "Anda sudah absen"
+          redirect_to users_path, alert: "Anda sudah absen"
         end
       end
     end

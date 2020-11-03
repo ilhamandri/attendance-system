@@ -45,6 +45,7 @@
         li.nav-item
           = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
   - flash.each do |key,msg|
+    if key == :notice
     div class="alert alert-success"
       = msg
   table class="table table-striped table-bordered mt-2 px-5"
