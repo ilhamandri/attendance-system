@@ -1,11 +1,11 @@
 class AttendancesController < ApplicationController
-
+  # before_action :check_attendance, only: [:create]
   def index
 
   end
 
   def create
-
+    # curret_user
   end
 
   def new
@@ -32,4 +32,8 @@ class AttendancesController < ApplicationController
     def attendance_params
       params.require(:attendance).permit(:date_attend)
     end
+
+    # def check_attendance
+    #   return
+    # end
 end

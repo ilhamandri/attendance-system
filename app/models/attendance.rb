@@ -4,7 +4,7 @@ class Attendance < ApplicationRecord
   enum status: {
     absent: 0,
     present: 1,
-  }
+  }, _prefix: "asd"
 
-  validates :date_attend
+  validates :date_attend, presence: true
 end
